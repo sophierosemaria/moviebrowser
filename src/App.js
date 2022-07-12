@@ -17,7 +17,15 @@ function App() {
   //   console.log(searchText, "is the new text")
   // }, 2000)
   
-  
+  useEffect(() => {
+    if(searchText) {
+      fetch(`https://api.themoviedb.org/3/search/company?api_key=11212f71e357d9fe6b5473b65bd724b6&query=${searchText}&page=1`)
+      .then(response => response.json())
+      .then(data => {
+        setSearchResults(data.results)
+      })
+    }
+  }, [searchText])
 
   return (
     <div>

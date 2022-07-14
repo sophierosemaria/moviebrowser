@@ -5,6 +5,7 @@ import Home from './components/Home';
 import AboutView from './components/AboutView';
 import Navbar from './components/Navbar';
 import SearchView from './components/SearchView';
+import MovieView from './components/MovieView'
 
 function App() {
   
@@ -48,6 +49,7 @@ function App() {
             />
           } 
         />
+        <Route path="/movies/:id" element={<MovieView/>} />
       </Routes>
 
     </div>

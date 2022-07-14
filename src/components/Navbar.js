@@ -6,6 +6,7 @@ const Navbar = ({searchText, setSearchText}) => {
         navigate('/search');
         setSearchText(e.target.value)
     };
+    
 
   return (
     <nav className="navbar navbar-expand-lg bg-light">

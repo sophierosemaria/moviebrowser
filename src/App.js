@@ -11,12 +11,6 @@ function App() {
   const [searchResults, setSearchResults] = useState ([]);
   const [searchText, setSearchText] = useState ('');
 
-  // console.log(searchText, "is the default")
-  // setTimeout(() => {
-  //   setSearchText("New text")
-  //   console.log(searchText, "is the new text")
-  // }, 2000)
-  
   useEffect(() => {
     if(searchText) {
       fetch(`https://api.themoviedb.org/3/search/company?api_key=11212f71e357d9fe6b5473b65bd724b6&query=${searchText}&page=1`)
@@ -33,7 +27,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutView />} />
-        <Route path='/search' element={<SearchView keyword={searchText} searchResults={searchResults}/>} />
+        <Route 
+          path='/search' 
+          element={
+            <SearchView 
+              keyword={searchText} 
+              searchResults={searchResults}
+            />
+          } 
+        />
       </Routes>
 
     </div>

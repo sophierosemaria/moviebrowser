@@ -14,7 +14,7 @@ function App() {
   
   useEffect(() => {
     const fetchData = () => {
-      return fetch(`https://api.themoviedb.org/3/search/company?api_key=11212f71e357d9fe6b5473b65bd724b6&query=${searchText}&page=1`)
+      return fetch(`https://api.themoviedb.org/3/search/movie?api_key=11212f71e357d9fe6b5473b65bd724b6&language=en-US&query=${searchText}&page=1&include_adult=false`)
         .then((response) => response.json())
         // .then((data) => console.log(data));
         .then((data) => {

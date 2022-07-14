@@ -7,15 +7,15 @@ const SearchView = ({ keyword, searchResults }) => {
   const title = `You are searching for ${keyword}`;
   const resultsHtml = searchResults.map((obj, index) => {
     return (
-      <li key={obj.original_title}>
+      <div key={index}>
         {obj.original_title}
-      </li>
+      </div>
     )
 })
   return (
     <>
       <Hero text={title} />
-      <ul>{resultsHtml}</ul>
+      {resultsHtml}
     </>
   );
 };

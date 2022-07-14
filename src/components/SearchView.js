@@ -5,13 +5,13 @@ import Hero from "./Hero";
 
 const SearchView = ({ keyword, searchResults }) => {
   const title = `You are searching for ${keyword}`;
-  const resultsHtml = searchResults.map((obj, index) => {
+  const resultsHtml = searchResults.map((obj, i) => {
     return (
-      <li>
+      <li key={obj.original_title}>
         {obj.original_title}
       </li>
     )
-  })
+})
   return (
     <>
       <Hero text={title} />

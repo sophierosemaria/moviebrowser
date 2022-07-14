@@ -1,21 +1,40 @@
 import Hero from "./Hero";
 
 //TMDB API KEY = 11212f71e357d9fe6b5473b65bd724b6
-//Example link for movie searches = https://api.themoviedb.org/3/search/company?api_key=11212f71e357d9fe6b5473b65bd724b6&query=star%20wars&page=1
+//Example link for movie searches = https://api.themoviedb.org/3/search/movie?api_key=11212f71e357d9fe6b5473b65bd724b6&language=en-US&query=star%20wars&page=1&include_adult=false
+
+const MovieCard = ({movie}) => {
+  const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  return (
+    <div className="col-lg-3 col-md-3 col-2 my-4">
+      <div className="card">
+        <img src={posterUrl} className="card-img-top" alt={movie.original_title} />
+        <div className="card-body">
+          <h5 className="card-title">{movie.original_title}</h5>
+          <a href="goSomewhere" className="btn btn-primary">Show details</a>
+        </div>
+      </div>
+    </div>
+    
+  )
+}
 
 const SearchView = ({ keyword, searchResults }) => {
   const title = `You are searching for ${keyword}`;
-  const resultsHtml = searchResults.map((obj, index) => {
+  const resultsHtml = searchResults.map((obj, i) => {
     return (
-      <div key={index}>
-        {obj.original_title}
-      </div>
+      <MovieCard movie={obj} key={i} />
     )
 })
   return (
     <>
       <Hero text={title} />
-      {resultsHtml}
+      {resultsHtml && 
+        <div className="container">
+          <div className="row">
+            {resultsHtml}
+          </div>
+        </div>}
     </>
   );
 };

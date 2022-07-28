@@ -5,7 +5,8 @@ import Home from './components/Home';
 import AboutView from './components/AboutView';
 import Navbar from './components/Navbar';
 import SearchView from './components/SearchView';
-import MovieView from './components/MovieView'
+import MovieView from './components/MovieView';
+import PageNotFound from './components/NotFoundPage';
 
 function App() {
   
@@ -50,6 +51,7 @@ function App() {
           } 
         />
         <Route path="/movies/:id" element={<MovieView/>} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
 
     </div>

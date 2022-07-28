@@ -2,6 +2,7 @@ import Hero from "./Hero";
 import { useParams} from 'react-router-dom';
 import { useState } from "react";
 import { useEffect } from "react";
+import ReactImageFallback from "react-image-fallback";
 
 const MovieView = () => {
   const { id } = useParams()
@@ -18,6 +19,7 @@ const MovieView = () => {
       })
   }, [id])
 
+
   function renderMovieDetails() {
     if (isLoading) {
       return <Hero text="Loading..." />
@@ -25,16 +27,19 @@ const MovieView = () => {
     if (movieDetails) {
     //   TODO: Deal with possible missing image
       const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
-      if (posterPath === "https://image.tmdb.org/t/p/w500null") {
-        
-      }
+      const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`
       return (
         <>
-          <Hero text={movieDetails.original_title} />
+          <Hero text={movieDetails.original_title} 
+          backdrop={backdropUrl} />
           <div className="container my-5">
             <div className="row">
               <div className="col-md-3">
-                <img src={posterPath} className="img-fluid shadow rounded" alt={movieDetails.original_title} />
+                <ReactImageFallback
+                  src={posterPath} 
+                  fallbackImage="https://olafdeboer.nl/wp-content/themes/koji/assets/images/default-fallback-image.png"
+                  className="img-fluid shadow rounded" 
+                  alt={movieDetails.original_title} />
               </div>
               <div className="col-md-9">
                 <h2>{movieDetails.original_title}</h2>

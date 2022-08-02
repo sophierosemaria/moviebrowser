@@ -33,10 +33,23 @@ const SearchView = ({ keyword, searchResults }) => {
       <MovieCard movie={obj} key={i} />
     )
   })
+  const renderResults = () => {
+    return <div className="container">
+        <div className="row">
+          {resultsHtml}
+        </div>
+      </div>
+  }
+  const renderNoResults = () => {
+    return <div className="container">
+        <h1 className="hero-text pt-5">Sorry, the movie you are looking for cannot be found.</h1>
+        <img className="noResultsImage" src={"https://i.postimg.cc/76cPTWhZ/pngwing-com.png"} alt="Sad person"/>
+      </div>
+  }
   return (
     <>
       <Hero text={title} />
-      {resultsHtml && 
+      {Array.isArray(resultsHtml) && resultsHtml.length ? renderResults() : renderNoResults()}
         <div className="container">
           <div className="row">
             {resultsHtml}

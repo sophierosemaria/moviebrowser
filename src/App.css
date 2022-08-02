@@ -43,3 +43,8 @@
 .medium-text {
     font-size: 1000%;
 }
+
+.noResultsImage {
+    width: 15rem;
+    padding: 2rem;
+}
